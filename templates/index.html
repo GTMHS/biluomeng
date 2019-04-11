@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>洛萌</title>
+    <script type="text/javascript">
+    var startTime = "2019-04-03 18:18:18";//开始时间
+    function count() {
+        var currTime = new Date();//当前时间
+        //将xxxx-xx-xx的时间格式，转换为 xxxx/xx/xx的格式
+        startTime = startTime.replace(/\-/g, "/");
+        var sTime = new Date(startTime);
+        var totalTime = currTime.getTime() - sTime.getTime();
+        var days = parseInt(totalTime/parseInt(1000*60*60*24));
+        totalTime = totalTime%parseInt(1000*60*60*24);
+        var hours = parseInt(totalTime/parseInt(1000*60*60));
+        totalTime = totalTime%parseInt(1000*60*60);
+        var minutes = parseInt(totalTime/parseInt(1000*60));
+        totalTime = totalTime%parseInt(1000*60);
+        var seconds = parseInt(totalTime/parseInt(1000));
+        var time = "";
+        if(days>=1){
+            time = days+"天"+hours+"时"+minutes+"分"+seconds+"秒";
+        }else if(hours>=1){
+            time = hours+"时"+minutes+"分"+seconds+"秒";
+        }else if(minutes>=1){
+            time = minutes+"分"+seconds+"秒";
+        }else{
+            time = seconds+"秒";
+        }
+        document.getElementById("div1").innerHTML = "我们已经相识" + time;
+        setTimeout("count()", 1000);
+    }
+    window.onload = count;
+</script>
+    <style>
+    .myDiv,p{
+        margin:0 auto;
+        margin-top:80px;
+        width:500px;
+        font-size: 200%;
+        {#color: red;#}
+    }
+</style>
+</head>
+<body>
+    <div class="myDiv">
+        <div id="div1"></div>
+    </div>
+
+</body>
+</html>
